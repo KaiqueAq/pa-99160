@@ -1,0 +1,98 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3b3dca;
+    background-image: url(fotos/golden-frame-blue-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(117, 16, 16);
+}
+
+img {
+    max-width: 40%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+
+p {
+    text-align: justify;
+    font-size: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+hr {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+button {
+    display: block;
+    height: auto;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ol {
+    margin: 10px auto;
+    padding: 30px auto;
+    margin-bottom: 30px;
+    text-align: center;
+    list-style-position: inside;
+}
+
+li {
+    color: #dacc12;;
+    font-size: 14px;
+    margin: 15px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px auto;
+}
+
+hr {
+    margin: 30px auto;
+}
+
+h3 {
+    text-align: center;
+}
+.cima {
+    margin-top: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.topo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999; /* Garante que fique acima de outros elementos */
+}
+.nome{
+    display: block;
+}
