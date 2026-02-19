@@ -79,13 +79,13 @@ h3 {
     text-align: center;
 }
 .cima {
-    margin-top: 500px;
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-around;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
 }
 .topo{
     position: fixed;
