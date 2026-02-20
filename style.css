@@ -7,7 +7,7 @@
 
 body {
     background-color: #3b3dca;
-    background-image: url(fotos/golden-frame-blue-background.jpg);
+    background-image: url(fotos/fundo.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -15,7 +15,8 @@ body {
 }
 
 h1 {
-    text-align: center;
+
+
     color: rgb(117, 16, 16);
 }
 
@@ -26,73 +27,97 @@ img {
     margin: 0 auto;
 }
 
-p {
-    text-align: justify;
-    font-size: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
 
-hr {
-    max-width: 50%;
+  
+  a {
+    text-decoration: none; /* Tira o sublinhado */
+    color: inherit;        /* Tira o azul (usa a cor do texto pai) */
+    
+    /* Estilos de H1 */
+    font-size: 2em;        /* Tamanho grande de título */
+    font-weight: bold;     /* Negrito */
+    display: block;        /* Faz o link ocupar a linha toda como um título */
+    margin: 0.67em 0;   
+    white-space: nowrap; /* Margem padrão de títulos */
+  }
+  
+  .footer-viagem {
+    background-color: #222;
+    color: white;
+    padding: 40px 20px 10px;
+    font-family: sans-serif;
+  }
+  
+  .footer-container {
+    display: flex; /* Coloca os blocos lado a lado */
+    justify-content: space-around; /* Espaça eles igualmente */
+    flex-wrap: wrap; /* Quebra linha se a tela for pequena */
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
-}
-
-button {
-    display: block;
-    height: auto;
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 10px;
+  }
+  
+  .footer-bloco {
+    flex: 1; /* Faz os blocos terem tamanhos flexíveis */
+    min-width: 200px;
+  }
+  
+  /* Aplicando o que aprendemos antes: Link igual a H1 */
+  .logo-footer a {
     text-decoration: none;
-    cursor: pointer;
-}
-
-ol {
-    margin: 10px auto;
-    padding: 30px auto;
-    margin-bottom: 30px;
-    text-align: center;
-    list-style-position: inside;
-}
-
-li {
-    color: #dacc12;;
-    font-size: 14px;
-    margin: 15px;
-}
-
-a {
-    display: block;
-    text-align: center;
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .logo-footer span {
+    color: #00d4ff; /* Um toque de cor para a "marca" */
+  }
+  
+  /* Tirando cor e sublinhado dos links de texto */
+  .footer-bloco ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-bloco ul li a {
+    color: #ccc;
     text-decoration: none;
-    margin: 0px auto;
-}
-
-hr {
-    margin: 30px auto;
-}
-
-h3 {
+    display: inline-block;
+    margin-bottom: 8px;
+    transition: 0.3s;
+  }
+  
+  .footer-bloco ul li a:hover {
+    color: white;
+    padding-left: 5px; /* Aquele pequeno espaço no início ao passar o mouse */
+  }
+  
+  .footer-bottom {
     text-align: center;
-}
-.cima {
-    margin-top: 500px;
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    opacity: 0.6; /* Deixando o copyright mais discreto */
+  }
+  
+  /* Configuração do corpo da página */
+body {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-around;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-.topo{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999; /* Garante que fique acima de outros elementos */
-}
-.nome{
-    display: block;
-}
+    min-height: 100vh; /* Faz o corpo ter no mínimo a altura da tela inteira */
+    margin: 0;
+  }
+  
+  /* O conteúdo principal cresce e empurra o footer para baixo */
+  main {
+    flex: 1; 
+  }
+  
+  /* O footer fica quietinho lá embaixo */
+  .footer-viagem {
+    margin-top: auto; 
+  }
+  
