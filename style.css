@@ -121,3 +121,23 @@ body {
     margin-top: auto; 
   }
   
+  /* Seleciona o link do Início */
+a[href="index.html"] {
+    display: inline-table; /* Cria um bloco que aceita inversão */
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Força a div da imagem a ir para o topo */
+a[href="index.html"] div {
+    display: table-header-group; 
+}
+.link-topo {
+    display: inline-table; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icone-cima {
+    display: table-header-group; 
+}
