@@ -1,0 +1,189 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3b3dca;
+    background-image: url(fotos/fundo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+
+
+    color: rgb(117, 16, 16);
+}
+
+img {
+    max-width: 40%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+  
+  a {
+    text-decoration: none; /* Tira o sublinhado */
+    color: inherit;        /* Tira o azul (usa a cor do texto pai) */
+    
+    /* Estilos de H1 */
+    font-size: 2em;        /* Tamanho grande de título */
+    font-weight: bold;     /* Negrito */
+    display: block;        /* Faz o link ocupar a linha toda como um título */
+    margin: 0.67em 0;   
+    white-space: nowrap; /* Margem padrão de títulos */
+  }
+  
+  .footer-viagem {
+    background-color: #222;
+    color: white;
+    padding: 40px 20px 10px;
+    font-family: sans-serif;
+  }
+  
+  .footer-container {
+    display: flex; /* Coloca os blocos lado a lado */
+    justify-content: space-around; /* Espaça eles igualmente */
+    flex-wrap: wrap; /* Quebra linha se a tela for pequena */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-bloco {
+    flex: 1; /* Faz os blocos terem tamanhos flexíveis */
+    min-width: 200px;
+  }
+  
+  /* Aplicando o que aprendemos antes: Link igual a H1 */
+  .logo-footer a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .logo-footer span {
+    color: #00d4ff; /* Um toque de cor para a "marca" */
+  }
+  
+  /* Tirando cor e sublinhado dos links de texto */
+  .footer-bloco ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-bloco ul li a {
+    color: #ccc;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 8px;
+    transition: 0.3s;
+  }
+  
+  .footer-bloco ul li a:hover {
+    color: white;
+    padding-left: 5px; /* Aquele pequeno espaço no início ao passar o mouse */
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    opacity: 0.6; /* Deixando o copyright mais discreto */
+  }
+  
+  /* Configuração do corpo da página */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Faz o corpo ter no mínimo a altura da tela inteira */
+    margin: 0;
+  }
+  
+  /* O conteúdo principal cresce e empurra o footer para baixo */
+  main {
+    flex: 1; 
+  }
+  
+  /* O footer fica quietinho lá embaixo */
+  .footer-viagem {
+    margin-top: auto; 
+  }
+
+  /* Seleciona o link do Início */
+a[href="index.html"] {
+    display: inline-table; /* Cria um bloco que aceita inversão */
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Força a div da imagem a ir para o topo */
+a[href="index.html"] div {
+    display: table-header-group; 
+}
+.link-topo {
+    display: inline-table; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icone-cima {
+    display: table-header-group; 
+}
+
+  /*--------------------------------------------------------------------------------------------------------------*/
+
+.area-pesquisa {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #1a0cd3;
+}
+
+/* Título da pesquisa */
+.area-pesquisa h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #ffd900;
+}
+
+/* Campo de input */
+.area-pesquisa input {
+    width: 300px;
+    max-width: 80%;
+    padding: 12px 15px;
+    border: 2px solid rgb(255, 208, 0);
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+/* Efeito quando clica */
+.area-pesquisa input:focus {
+    border-color: #ff9900;
+    box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
+}
+.label-pesquisa {
+    font-size:20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ffd900;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    transition: 0.3s;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+

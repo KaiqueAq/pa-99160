@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="PT.style.css">
 </head>
+
 <body>
-    <div> 
+   <div> 
         <div style="padding-left:  60px;  display: flex; gap: 270px; font-size: 15px; background-color: rgb(255, 208, 0);">
-            <a href="index.html">Início</a>
-            <a href="PT.html">Pontos Turísticos</a>
-            <a href="CU.html">Curiosidades</a>
+            <a href="index.html">Início <div><img style="width: 50px;" src="fotos\house-check-fill.svg" alt=""></div></a>
+            <a class="link-topo" href="PT.html">Pontos Turísticos <div class="icone-cima"><img style="width: 50px;" src="fotos\airplane-fill.svg" alt=""></div></a>
+            <a class="link-topo" href="CU.html">Curiosidades <div class="icone-cima"><img style="width: 27px;" src="fotos\lightbulb-fill.svg" alt=""></div></a>
         </div>
+    </div>
+
+    <div class="area-pesquisa" style="padding: 10px; text-align: center;">
+        <label class="label-pesquisa" for="pesquisa">Encontre seu próximo destino: </label>
+        <input type="text" id="pesquisa" placeholder="Digite o nome">
     </div>
 
     <footer class="footer-viagem">
@@ -45,7 +51,7 @@
         <div class="footer-bottom">
           &copy; 2024 Mundo Explorer - Todos os direitos reservados.
         </div>
-      </footer>
-</body>
+    </footer>
 
+</body>
 </html>
