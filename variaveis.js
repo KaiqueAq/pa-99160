@@ -1,10 +1,33 @@
-// condicional
+/*function soma(a, b) {
+    return a + b
+    
+}*/
 
-const idade = 29 
 
-if (idade<30){
-    console.log(`para`)
+
+const soma = (a, b) =>{
+    return a + b
 }
-else{
-    console.log(`para2`)
+console.log(soma(3,2))
+
+const palvra = ()=> {
+    console.log(`jfldkjskfljlkfjkljdflsdlkf`)
+    console.log(`jfldkjskfljlkfjkljdflsdlkf`)
+    console.log(`jfldkjskfljlkfjkljdflsdlkf`)
+    console.log(`jfldkjskfljlkfjkljdflsdlkf`)
+    console.log(`jfldkjskfljlkfjkljdflsdlkf`)
 }
+
+palvra()
+
+
+const list = []
+// add 
+list.push('maria', 'maria', 'maria')
+// remove o primeiro 
+list.shift()
+// remove o ultimo
+list.pop()
+// no índice 1, romover 1 elemento.
+list.splice(0,1)
+console.log(list[0])
