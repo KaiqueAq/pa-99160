@@ -1,21 +1,25 @@
 function gerarTabuada() {
+    // Pegar o valor do input no HTML.
     const numeroInput = document.getElementById("numeroInput");
-    let numero = parentInt(numeroInput.value);
+    let numero = parseInt(numeroInput.value);
 
+    // Pega o elemento HTML onde a tabuada será exibida.
     const resultadoDiv = document.getElementById("resultadoTabuada");
     resultadoDiv.innerHTML = "";
 
-    if (isNaN(numero) || numero === null || numero === ""){
+    // Verifica se a entrada é um número válido.
+    if (isNaN(numero) || numero === null || numero === "") {
         resultadoDiv.innerHTML = "<p>Por favor, digite um número...</p>";
         return;
     }
 
-    resultadoDiv.innerHTML += `<h2>Tabuada do numero: ${numero}</h2>`;
+    // Adiciona um título para tabuada.
+    resultadoDiv.innerHTML += `<h2>Tabuada do número: ${numero}</h2>`;
 
-    for(let i = 1; i<= 10; i++){
+    // Laço de repetição para gerar a tabuada de 1 até 10.
+    for(let i = 1; i <= 10; i++) {
         let resultado = numero * i;
-        resultadoDiv.innerHTML += `<p> ${numero} x ${i} = ${resultado} </p>`;
-
+        resultadoDiv.innerHTML += `<p>${numero} x ${i} = ${resultado}</p>`;
     }
 }
 
