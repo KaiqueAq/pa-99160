@@ -1,0 +1,17 @@
+.caixa-login {
+    background-color: #ffffff; /* O branco do container */
+    width: 350px;              /* Largura da caixa */
+    margin: 0 auto;            /* Centraliza horizontalmente */
+    padding: 30px;             /* Espaço interno */
+    border-radius: 8px;        /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.caixa-fundo {
+    background-color: #0cd38d; /* O branco do container */         /* Largura da caixa */          /* Centraliza horizontalmente */            /* Espaço interno */
+    border-radius: 8px;        /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
