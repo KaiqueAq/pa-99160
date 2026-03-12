@@ -31,3 +31,10 @@
     border-radius: 8px; 
     height: 20%;
 }
+section {
+    display: none;
+}
+
+section.ativa {
+    display: block;
+}

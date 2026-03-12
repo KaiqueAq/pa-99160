@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="caixa-fundo">
-    <h1>Gerador de tabuada</h1>
+    <nav class="menu">
+        <!-- ---------------------------------------------- -->
+        <section id="sec1">
+            <button type="button" onclick="irParaSecao('sec2')">Ir para a segunda seção</button>
+            <button type="button" onclick="irParaSecao('sec3')">Ir para a terceira seção</button>
+            <div class="container">
+                <div class="caixa-fundo">
 
-        <label for="numeroInput">Digite um numero: </label>
-        <input type="number" id="numeroInput" placeholder="Ex.: 5">
-        <button class="botaoGerar" id="gerarBotao">Gerar tabuada</button>
+                    <h1>Gerador de tabuada</h1>
 
-        <div class="resultadoTabuada" id="resultadoTabuada"></div>
-        </div>
-    </div>
+                    <label for="numeroInput">Digite um numero: </label>
+                    <input type="number" id="numeroInput" placeholder="Ex.: 5">
+                    <button class="botaoGerar" id="gerarBotao">Gerar tabuada</button>
+
+                    <div class="resultadoTabuada" id="resultadoTabuada"></div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ---------------------------------------------- -->
+        <section id="sec2">
+            <button type="button" onclick="irParaSecao('sec1')">Voltar para a primeira seção</button>
+            <button type="button" onclick="irParaSecao('sec3')">Ir para a terceira seção</button>
+            <div class="container">
+                <div class="caixa-fundo">
+                    <h1>Gerador de Media</h1>
+                    <div class="tudo">
+                        <label for="numeroInput">Digite o Nome: </label>
+                        <input type="text" id="numeroInput" placeholder="Ex.: Juliana">
+                        <label for="numeroInput2">Digite sua nota 1ª: </label>
+                        <input type="number" id="numeroInput2" placeholder="Ex.: 5">
+                        <label for="numeroInput3">Digite sua nota 2ª: </label>
+                        <input type="number" id="numeroInput3" placeholder="Ex.: 5">
+                        <button class="botaoGerar" id="gerarBotao2">Gerar</button>
+                    </div>
+                    <div class="resultadoMedia" id="resultadoMedia"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ---------------------------------------------- -->
+        <section id="sec3">
+            <button type="button" onclick="irParaSecao('sec1')">Voltar para a primeira seção</button>
+            <button type="button" onclick="irParaSecao('sec2')">Ir para a segunda seção</button>
+            <div class="container">
+                <div class="caixa-fundo">
+                    <h1>algoritiomo</h1>
+                    <div class="tudo">
+                        <label for="numeroInput">Digite o Nome: </label>
+                        <input type="text" id="numeroInput" placeholder="Ex.: Juliana">
+                        <label for="numeroInput2">Digite sua nota 1ª: </label>
+                        <input type="number" id="numeroInput2" placeholder="Ex.: 5">
+                        <label for="numeroInput3">Digite sua nota 2ª: </label>
+                        <input type="number" id="numeroInput3" placeholder="Ex.: 5">
+                        <button class="botaoGerar" id="gerarBotao2">Gerar</button>
+                    </div>
+                    <div class="resultadoMedia" id="resultadoMedia"></div>
+                </div>
+            </div>
+        </section>
+    </nav>
     <script src="script.js"></script>
 </body>
+
 </html>
