@@ -1,0 +1,420 @@
+/* =========================================
+VARIÁVEIS DE TEMA (Paleta Anime/System)
+   ========================================= */
+:root {
+  /* Cores de Fundo (Dark Mode Profundo) */
+  --bg-dark: #090a0c;          /* Fundo principal (quase preto) */
+  --bg-header: #111317;       /* Fundo do header/abas */
+  --bg-card: rgba(20, 22, 27, 0.95); /* Fundo dos cards (levemente transparente) */
+  --bg-input: #050607;        /* Fundo dos campos de input */
+  --bg-result: #0d0f12;       /* Fundo da caixa de resultados */
+
+  /* Cores de Acento e Neons */
+  --accent-main: #00e5ff;     /* Azul Neon (Solo Leveling/System) */
+  --accent-hover: #4defff;
+  --accent-active: #00c4db;
+  --purple-jujutsu: #a155ff;  /* Roxo (Jujutsu Kaisen) */
+  
+  /* Cores de Status */
+  --danger: #ff3860;          /* Vermelho (Erros/Berserk) */
+  --success: #23d160;         /* Verde (Aprovação/Dragon Ball) */
+  
+  /* Cores de Texto */
+  --text-main: #e0e6ed;
+  --text-muted: #8899a6;
+  --text-on-accent: #000;
+  
+  /* Detalhes Visuais */
+  --border-radius: 6px;
+  --border-color: #2a313d;
+  --neon-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  --danger-shadow: 0 0 10px rgba(255, 56, 96, 0.5);
+  --transition: all 0.25s ease-out;
+}
+
+/* =========================================
+  RESET E FONTES
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* =========================================
+  HEADER & ABAS (TABS)
+   ========================================= */
+.header {
+  background-color: var(--bg-header);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tab {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.tab:hover {
+  color: var(--text-main);
+  background-color: rgba(0, 229, 255, 0.05);
+}
+
+.tab.active {
+  color: var(--text-on-accent);
+  background-color: var(--accent-main);
+  border-color: var(--accent-active);
+  box-shadow: var(--neon-shadow);
+}
+
+/* Pequena barra neon abaixo da aba ativa */
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background-color: var(--accent-main);
+  box-shadow: var(--neon-shadow);
+}
+
+/* =========================================
+  CONTEÚDO PRINCIPAL E ANIMAÇÃO
+   ========================================= */
+.main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.page {
+  display: none;
+  animation: pageIn 0.4s ease forwards;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+  CABEÇALHO DA PÁGINA (TÍTULOS)
+   ========================================= */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(0, 229, 255, 0.1);
+  color: var(--accent-main);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.page-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* =========================================
+  CARDS E FORMULÁRIOS (Visual "System")
+   ========================================= */
+.card {
+  background-color: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de borda neon sutil no topo do card */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-main), transparent);
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.input-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.field input {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  font-family: 'Consolas', 'Monaco', monospace; /* Fonte mono para inputs */
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.field input:focus {
+  border-color: var(--accent-main);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.15);
+}
+
+/* Estilo para quando o input está inválido */
+.field input:not(:placeholder-shown):invalid {
+  border-color: var(--danger);
+}
+
+/* =========================================
+  BOTÕES E RESULTADOS
+   ========================================= */
+.btn {
+  width: 100%;
+  background-color: var(--bg-input); /* Botão "vazio" inicialmente */
+  color: var(--accent-main);
+  border: 1px solid var(--accent-main);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: var(--accent-main);
+  color: var(--text-on-accent);
+  box-shadow: var(--neon-shadow);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Efeito de brilho ao passar o mouse */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.result-box {
+  margin-top: 2rem;
+  background-color: var(--bg-result);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  animation: resultIn 0.3s ease-out forwards;
+}
+
+@keyframes resultIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-box.hidden {
+  display: none;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.result-item.full {
+  flex-direction: column;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.rlabel {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rvalue {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.25rem;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* Cores específicas para aprovação/reprovação */
+.rvalue.approved {
+  color: var(--success);
+  text-shadow: 0 0 10px rgba(35, 209, 96, 0.4);
+}
+
+.rvalue.denied {
+  color: var(--danger);
+  text-shadow: 0 0 10px rgba(255, 56, 96, 0.4);
+}
+
+/* =========================================
+  MENSAGEM DE ERRO (Visual "Death Note/System Error")
+   ========================================= */
+.error-msg {
+  background-color: rgba(255, 56, 96, 0.05);
+  color: var(--danger);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  margin-top: 1.5rem;
+  text-align: center;
+  border: 1px solid var(--danger);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--danger-shadow);
+  animation: errorShake 0.4s ease-in-out;
+}
+
+.error-msg.hidden {
+  display: none;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* =========================================
+  RESPONSIVIDADE (Mobile First)
+   ========================================= */
+@media (max-width: 600px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .input-grid, .input-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.75rem; /* Espaço para a barra de rolagem */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tab {
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .result-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+}

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Programação - Anime Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .header h1 {
+            color: #00ff41;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #00ff41;
+            margin-bottom: 10px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 255, 65, 0.3);
+            box-shadow: 0 0 15px #00ff41;
+        }
+
+        .tab-btn.active {
+            background: #00ff41;
+            color: #000;
+            box-shadow: 0 0 30px #00ff41;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .exercise-card {
+            display: none;
+            background: rgba(20, 20, 50, 0.9);
+            border: 2px solid #ff0080;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 128, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .exercise-card.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #00ff41;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .card-subtitle {
+            color: #ffff00;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ffff00;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            border-color: #ffff00;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00ff41 0%, #ffff00 100%);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .btn-calculate:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+        }
+
+        .results-box {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .results-box.show {
+            display: block;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+            color: #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            color: #ffff00;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .result-value {
+            color: #00ff41;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff41;
+            font-family: 'Courier New', monospace;
+        }
+
+        .error-msg {
+            display: none;
+            padding: 15px;
+            background: rgba(255, 0, 128, 0.2);
+            border: 2px solid #ff0080;
+            border-radius: 8px;
+            color: #ff0080;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .tabs-container {
+                gap: 5px;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 EXERCÍCIOS DE PROGRAMAÇÃO</h1>
+        <p style="color: #ffff00; font-size: 1.2rem; text-shadow: 0 0 10px #ffff00;">Estilo Anime • Sistema Neon</p>
+    </div>
+
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="showTab('ex1')">01 - Dois Números</button>
+        <button class="tab-btn" onclick="showTab('ex2')">02 - Notas</button>
+        <button class="tab-btn" onclick="showTab('ex3')">03 - Votar</button>
+        <button class="tab-btn" onclick="showTab('ex4')">04 - Aposentadoria</button>
+        <button class="tab-btn" onclick="showTab('ex5')">05 - Maçãs</button>
+        <button class="tab-btn" onclick="showTab('ex6')">06 - Validação</button>
+    </div>
+
+    <div class="exercises-grid">
+        <!-- EX1 -->
+        <div class="exercise-card active" id="ex1">
+            <div class="card-icon">🔢</div>
+            <h2 class="card-title">Dois Números</h2>
+            <p class="card-subtitle">Calcule média, soma, produto, maior e menor</p>
+
+            <div class="form-group">
+                <label>Número 1</label>
+                <input type="number" id="ex1n1" placeholder="Digite o primeiro número">
+            </div>
+
+            <div class="form-group">
+                <label>Número 2</label>
+                <input type="number" id="ex1n2" placeholder="Digite o segundo número">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx1()">⚡ Calcular</button>
+
+            <div class="error-msg" id="ex1error"></div>
+
+            <div class="results-box" id="ex1results">
+                <div class="result-item">
+                    <span class="result-label">🔢 Média</span>
+                    <span class="result-value" id="ex1med">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">➕ Soma</span>
+                    <span class="result-value" id="ex1soma">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">✖️ Produto</span>
+                    <span class="result-value" id="ex1prod">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📈 Maior</span>
+                    <span class="result-value" id="ex1maior">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📉 Menor</span>
+                    <span class="result-value" id="ex1menor">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EX2 -->
+        <div class="exercise-card" id="ex2">
+            <div class="card-icon">📚</div>
+            <h2 class="card-title">Notas do Aluno</h2>
+            <p class="card-subtitle">Média mínima: 7.0 (Aprovado)</p>
+
+            <div class="form-group">
+                <label>Nota 1</label>
+                <input type="number" id="ex2n1" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <div class="form-group">
+                <label>Nota 2</label>
+                <input type="number" id="ex2n2" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <div class="form-group">
+                <label>Nota 3</label>
+                <input type="number" id="ex2n3" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx2()">⚡ Calcular</button>
+
+            <div class="error-msg" id="ex2error"></div>
+
+            <div class="results-box" id="ex2results">
+                <div class="result-item">
+                    <span class="result-label">📊 Média</span>
+                    <span class="result-value" id="ex2med">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">✅ Situação</span>
+                    <span class="result-value" id="ex2sit">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EX3 -->
+        <div class="exercise-card" id="ex3">
+            <div class="card-icon">🗳️</div>
+            <h2 class="card-title">Obrigação de Votar</h2>
+            <p class="card-subtitle">Verifique sua situação eleitoral</p>
+
+            <div class="form-group">
+                <label>Sua Idade</label>
+                <input type="number" id="ex3idade" min="0" placeholder="Digite sua idade">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx3()">⚡ Verificar</button>
+
+            <div class="error-msg" id="ex3error"></div>
+
+            <div class="results-box" id="ex3results">
+                <div class="result-item">
+                    <span class="result-label">📋 Situação</span>
+                    <span class="result-value" id="ex3sit">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EX4 -->
+        <div class="exercise-card" id="ex4">
+            <div class="card-icon">👴</div>
+            <h2 class="card-title">Aposentadoria</h2>
+            <p class="card-subtitle">65 anos OU 30 anos de trabalho</p>
+
+            <div class="form-group">
+                <label>Matrícula</label>
+                <input type="text" id="ex4cod" placeholder="EMP-001">
+            </div>
+
+            <div class="form-group">
+                <label>Ano de Nascimento</label>
+                <input type="number" id="ex4nasc" placeholder="1970">
+            </div>
+
+            <div class="form-group">
+                <label>Anos de Trabalho</label>
+                <input type="number" id="ex4trab" placeholder="25">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx4()">⚡ Verificar</button>
+
+            <div class="error-msg" id="ex4error"></div>
+
+            <div class="results-box" id="ex4results">
+                <div class="result-item">
+                    <span class="result-label">🆔 Código</span>
+                    <span class="result-value" id="ex4rcod">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📅 Idade</span>
+                    <span class="result-value" id="ex4ridade">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">💼 Trabalho</span>
+                    <span class="result-value" id="ex4rtrab">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">✅ Status</span>
+                    <span class="result-value" id="ex4rstatus">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EX5 -->
+        <div class="exercise-card" id="ex5">
+            <div class="card-icon">🍎</div>
+            <h2 class="card-title">Compra de Maçãs</h2>
+            <p class="card-subtitle">< 12: R$1.30 | ≥ 12: R$1.00</p>
+
+            <div class="form-group">
+                <label>Quantidade</label>
+                <input type="number" id="ex5qtd" min="1" placeholder="Digite a quantidade">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx5()">⚡ Calcular Total</button>
+
+            <div class="error-msg" id="ex5error"></div>
+
+            <div class="results-box" id="ex5results">
+                <div class="result-item">
+                    <span class="result-label">📦 Quantidade</span>
+                    <span class="result-value" id="ex5rqtd">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">💰 Unitário</span>
+                    <span class="result-value" id="ex5rpreco">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">🧾 Total</span>
+                    <span class="result-value" id="ex5rtotal">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- EX6 -->
+        <div class="exercise-card" id="ex6">
+            <div class="card-icon">🎓</div>
+            <h2 class="card-title">Notas + Validação</h2>
+            <p class="card-subtitle">Validação: 0-10 com Recuperação</p>
+
+            <div class="form-group">
+                <label>Nota 1</label>
+                <input type="number" id="ex6n1" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <div class="form-group">
+                <label>Nota 2</label>
+                <input type="number" id="ex6n2" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <div class="form-group">
+                <label>Nota 3</label>
+                <input type="number" id="ex6n3" min="0" max="10" step="0.1" placeholder="0-10">
+            </div>
+
+            <button class="btn-calculate" onclick="calcEx6()">⚡ Calcular</button>
+
+            <div class="error-msg" id="ex6error"></div>
+
+            <div class="results-box" id="ex6results">
+                <div class="result-item">
+                    <span class="result-label">📊 Média</span>
+                    <span class="result-value" id="ex6med">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">✅ Situação</span>
+                    <span class="result-value" id="ex6sit">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.exercise-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showError(elementId, message) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        function hideError(elementId) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.classList.remove('show');
+        }
+
+        // EX1
+        function calcEx1() {
+            hideError('ex1error');
+            const n1 = parseFloat(document.getElementById('ex1n1').value);
+            const n2 = parseFloat(document.getElementById('ex1n2').value);
+
+            if (isNaN(n1) || isNaN(n2)) {
+                showError('ex1error', '❌ Preencha os dois números!');
+                return;
+            }
+
+            const fmt = n => Number.isInteger(n) ? n : n.toFixed(2);
+            document.getElementById('ex1med').textContent = fmt((n1 + n2) / 2);
+            document.getElementById('ex1soma').textContent = fmt(n1 + n2);
+            document.getElementById('ex1prod').textContent = fmt(n1 * n2);
+            document.getElementById('ex1maior').textContent = fmt(Math.max(n1, n2));
+            document.getElementById('ex1menor').textContent = fmt(Math.min(n1, n2));
+            document.getElementById('ex1results').classList.add('show');
+        }
+
+        // EX2
+        function calcEx2() {
+            hideError('ex2error');
+            const n1 = parseFloat(document.getElementById('ex2n1').value);
+            const n2 = parseFloat(document.getElementById('ex2n2').value);
+            const n3 = parseFloat(document.getElementById('ex2n3').value);
+
+            if ([n1, n2, n3].some(isNaN)) {
+                showError('ex2error', '❌ Preencha as três notas!');
+                return;
+            }
+
+            const media = (n1 + n2 + n3) / 3;
+            const situacao = media >= 7 ? '✅ Aprovado' : '❌ Reprovado';
+            
+            document.getElementById('ex2med').textContent = media.toFixed(2);
+            document.getElementById('ex2sit').textContent = situacao;
+            document.getElementById('ex2results').classList.add('show');
+        }
+
+        // EX3
+        function calcEx3() {
+            hideError('ex3error');
+            const idade = parseInt(document.getElementById('ex3idade').value);
+
+            if (isNaN(idade) || idade < 0) {
+                showError('ex3error', '❌ Informe uma idade válida!');
+                return;
+            }
+
+            let situacao;
+            if (idade < 16) situacao = '🚫 Não pode votar';
+            else if (idade < 18 || idade > 65) situacao = '📝 Voto opcional';
+            else situacao = '✅ Voto obrigatório';
+
+            document.getElementById('ex3sit').textContent = situacao;
+            document.getElementById('ex3results').classList.add('show');
+        }
+
+        // EX4
+        function calcEx4() {
+            hideError('ex4error');
+            const cod = document.getElementById('ex4cod').value.trim();
+            const nasc = parseInt(document.getElementById('ex4nasc').value);
+            const trab = parseFloat(document.getElementById('ex4trab').value);
+
+            if (!cod || isNaN(nasc) || isNaN(trab)) {
+                showError('ex4error', '❌ Preencha todos os campos!');
+                return;
+            }
+
+            const idade = new Date().getFullYear() - nasc;
+            const elegivel = idade >= 65 || trab >= 30;
+
+            document.getElementById('ex4rcod').textContent = cod;
+            document.getElementById('ex4ridade').textContent = idade + ' anos';
+            document.getElementById('ex4rtrab').textContent = trab + ' anos';
+            document.getElementById('ex4rstatus').textContent = elegivel ? '✅ Pode requerer' : '❌ Não pode requerer';
+            document.getElementById('ex4results').classList.add('show');
+        }
+
+        // EX5
+        function calcEx5() {
+            hideError('ex5error');
+            const qtd = parseInt(document.getElementById('ex5qtd').value);
+
+            if (isNaN(qtd) || qtd < 1) {
+                showError('ex5error', '❌ Informe uma quantidade válida!');
+                return;
+            }
+
+            const preco = qtd < 12 ? 1.30 : 1.00;
+            const total = qtd * preco;
+
+            document.getElementById('ex5rqtd').textContent = qtd + ' un';
+            document.getElementById('ex5rpreco').textContent = 'R$ ' + preco.toFixed(2);
+            document.getElementById('ex5rtotal').textContent = 'R$ ' + total.toFixed(2);
+            document.getElementById('ex5results').classList.add('show');
+        }
+
+        // EX6
+        function calcEx6() {
+            hideError('ex6error');
+            const n1 = parseFloat(document.getElementById('ex6n1').value);
+            const n2 = parseFloat(document.getElementById('ex6n2').value);
+            const n3 = parseFloat(document.getElementById('ex6n3').value);
+
+            if ([n1, n2, n3].some(n => isNaN(n) || n < 0 || n > 10)) {
+                showError('ex6error', '⚠️ Insira notas válidas entre 0 e 10!');
+                return;
+            }
+
+            const media = (n1 + n2 + n3) / 3;
+            let situacao;
+            if (media >= 7) situacao = '✅ Aprovado';
+            else if (media >= 5) situacao = '⚠️ Recuperação';
+            else situacao = '❌ Reprovado';
+
+            document.getElementById('ex6med').textContent = media.toFixed(2);
+            document.getElementById('ex6sit').textContent = situacao;
+            document.getElementById('ex6results').classList.add('show');
+        }
+
+        // Enter para calcular
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const activeCard = document.querySelector('.exercise-card.active');
+                const btn = activeCard.querySelector('.btn-calculate');
+                if (btn) btn.click();
+            }
+        });
+    </script>
+</body>
+</html>

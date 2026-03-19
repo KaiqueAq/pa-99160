@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercícios JS — SENAI</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+<body>
+
+  <!-- Header with tabs -->
+  <header class="header">
+    <div class="tabs">
+      <button class="tab active" data-page="ex1">01 - Dois Números</button>
+      <button class="tab" data-page="ex2">02 - Notas do Aluno</button>
+      <button class="tab" data-page="ex3">03 - Obrigação de Votar</button>
+      <button class="tab" data-page="ex4">04 - Aposentadoria</button>
+      <button class="tab" data-page="ex5">05 - Compra de Maçãs</button>
+      <button class="tab" data-page="ex6">06 - Notas + Validação</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main" id="main">
+
+    <!-- EX1 -->
+    <section class="page active" id="ex1">
+      <div class="page-header">
+        <span class="badge">Exercício 01</span>
+        <h1>Dois Números</h1>
+        <p>Informe dois números e veja a média, soma, produto, maior e menor valor.</p>
+      </div>
+      <div class="card">
+        <div class="input-grid">
+          <div class="field">
+            <label for="ex1n1">Número 1</label>
+            <input type="number" id="ex1n1" placeholder="ex: 8" />
+          </div>
+          <div class="field">
+            <label for="ex1n2">Número 2</label>
+            <input type="number" id="ex1n2" placeholder="ex: 4" />
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx1()">Calcular</button>
+        <div class="result-box hidden" id="ex1result">
+          <div class="result-item">
+            <span class="rlabel">Média</span>
+            <span class="rvalue" id="ex1med"></span>
+          </div>
+          <div class="result-item">
+            <span class="rlabel">Soma</span>
+            <span class="rvalue" id="ex1soma"></span>
+          </div>
+          <div class="result-item">
+            <span class="rlabel">Produto</span>
+            <span class="rvalue" id="ex1prod"></span>
+          </div>
+          <div class="result-item">
+            <span class="rlabel">Maior número</span>
+            <span class="rvalue" id="ex1maior"></span>
+          </div>
+          <div class="result-item">
+            <span class="rlabel">Menor número</span>
+            <span class="rvalue" id="ex1menor"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EX2 -->
+    <section class="page" id="ex2">
+      <div class="page-header">
+        <span class="badge">Exercício 02</span>
+        <h1>Notas do Aluno</h1>
+        <p>Média mínima para aprovação: 7,0.</p>
+      </div>
+      <div class="card">
+        <div class="input-grid input-grid-3">
+          <div class="field">
+            <label for="ex2n1">Nota 1</label>
+            <input type="number" id="ex2n1" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+          <div class="field">
+            <label for="ex2n2">Nota 2</label>
+            <input type="number" id="ex2n2" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+          <div class="field">
+            <label for="ex2n3">Nota 3</label>
+            <input type="number" id="ex2n3" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx2()">Calcular</button>
+        <div class="result-box hidden" id="ex2result">
+          <div class="result-item">
+            <span class="rlabel">Média</span>
+            <span class="rvalue" id="ex2med"></span>
+          </div>
+          <div class="result-item">
+            <span class="rlabel">Situação</span>
+            <span class="rvalue" id="ex2sit"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EX3 -->
+    <section class="page" id="ex3">
+      <div class="page-header">
+        <span class="badge">Exercício 03</span>
+        <h1>Obrigação de Votar</h1>
+        <p>Verifique sua situação eleitoral pela idade.</p>
+      </div>
+      <div class="card">
+        <div class="input-grid">
+          <div class="field">
+            <label for="ex3idade">Sua idade</label>
+            <input type="number" id="ex3idade" placeholder="ex: 22" min="0"/>
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx3()">Verificar</button>
+        <div class="result-box hidden" id="ex3result">
+          <div class="result-item full">
+            <span class="rlabel">Situação Eleitoral</span>
+            <span class="rvalue" id="ex3sit"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EX4 -->
+    <section class="page" id="ex4">
+      <div class="page-header">
+        <span class="badge">Exercício 04</span>
+        <h1>Aposentadoria</h1>
+        <p>Requisitos: 65 anos de idade OU 30 anos de trabalho.</p>
+      </div>
+      <div class="card">
+        <div class="input-grid input-grid-3">
+          <div class="field">
+            <label for="ex4cod">Matrícula</label>
+            <input type="text" id="ex4cod" placeholder="ex: EMP-001"/>
+          </div>
+          <div class="field">
+            <label for="ex4nasc">Ano Nasc.</label>
+            <input type="number" id="ex4nasc" placeholder="ex: 1970"/>
+          </div>
+          <div class="field">
+            <label for="ex4trab">Anos Trab.</label>
+            <input type="number" id="ex4trab" placeholder="ex: 25"/>
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx4()">Verificar</button>
+        <div class="result-box hidden" id="ex4result">
+          <div class="result-item"><span class="rlabel">Cod</span><span class="rvalue" id="ex4rcod"></span></div>
+          <div class="result-item"><span class="rlabel">Idade</span><span class="rvalue" id="ex4ridade"></span></div>
+          <div class="result-item"><span class="rlabel">Trabalho</span><span class="rvalue" id="ex4rtrab"></span></div>
+          <div class="result-item"><span class="rlabel">Status</span><span class="rvalue" id="ex4rstatus"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EX5 -->
+    <section class="page" id="ex5">
+      <div class="page-header">
+        <span class="badge">Exercício 05</span>
+        <h1>Compra de Maçãs</h1>
+        <p>< 12 un: R$ 1,30 | ≥ 12 un: R$ 1,00</p>
+      </div>
+      <div class="card">
+        <div class="input-grid">
+          <div class="field">
+            <label for="ex5qtd">Quantidade</label>
+            <input type="number" id="ex5qtd" placeholder="ex: 10" min="1"/>
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx5()">Calcular Total</button>
+        <div class="result-box hidden" id="ex5result">
+          <div class="result-item"><span class="rlabel">Qtd</span><span class="rvalue" id="ex5rqtd"></span></div>
+          <div class="result-item"><span class="rlabel">Unitário</span><span class="rvalue" id="ex5rpreco"></span></div>
+          <div class="result-item"><span class="rlabel">Total</span><span class="rvalue" id="ex5rtotal"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EX6 -->
+    <section class="page" id="ex6">
+      <div class="page-header">
+        <span class="badge">Exercício 06</span>
+        <h1>Notas + Validação</h1>
+        <p>Validação de 0 a 10 com status de Recuperação.</p>
+      </div>
+      <div class="card">
+        <div class="input-grid input-grid-3">
+          <div class="field">
+            <label for="ex6n1">Nota 1</label>
+            <input type="number" id="ex6n1" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+          <div class="field">
+            <label for="ex6n2">Nota 2</label>
+            <input type="number" id="ex6n2" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+          <div class="field">
+            <label for="ex6n3">Nota 3</label>
+            <input type="number" id="ex6n3" placeholder="0-10" min="0" max="10" step="0.1"/>
+          </div>
+        </div>
+        <button class="btn" onclick="calcEx6()">Calcular</button>
+        <div class="error-msg hidden" id="ex6error"></div>
+        <div class="result-box hidden" id="ex6result">
+          <div class="result-item"><span class="rlabel">Média</span><span class="rvalue" id="ex6med"></span></div>
+          <div class="result-item"><span class="rlabel">Situação</span><span class="rvalue" id="ex6sit"></span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script consolidado -->
+  <script src="/js/script.js"></script>
+</body>
+</html>
