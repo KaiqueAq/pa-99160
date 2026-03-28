@@ -1,0 +1,11 @@
+.Info-Curso{
+    background-color: rgb(15, 123, 218);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 20%;
+    border-top: 8px solid black;
+}
+
+.Info-Curso :hover{
+    opacity: 0;
+}
