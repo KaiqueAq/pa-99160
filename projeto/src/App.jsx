@@ -4,8 +4,12 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
+import Home from './pages/Home/index'
+import SobreNos from './pages/SobreNos/index'
+import FaleConosco from './pages/FaleConosco/index'
+import Footer from './components/Footer/index'
 
-function App() {
+export default function App() {
 
 
   return (
@@ -19,8 +23,8 @@ function App() {
         </Routes>
       </main>
       
+      
     </>
   )
 }
 
-export default App

@@ -1,5 +1,5 @@
 
-import {Link, NaviLInk} from 'react-router-dom'
+import {Link, NavLink } from 'react-router-dom';
 import './style.css'
 import logo from '../../assets/github-svgrepo-com.svg'
 
@@ -12,10 +12,10 @@ export default function Header() {
                 <span>Contabilidade Simples</span>
                 </Link>
                 <nav>
-                    <NaviLInk to= "/sobre-nos">Sobre nós</NaviLInk>
-                    <NaviLInk to= "/fale-conosco">Fale conosco</NaviLInk>
+                    <NavLink to= "/sobre-nos">Sobre nós</NavLink>
+                    <NavLink to= "/fale-conosco">Fale conosco</NavLink>
                 </nav>
             </div>
-        </header>
+        </header> 
     )
 }
