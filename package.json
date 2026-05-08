@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3",
+    "sequelize": "^6.37.8"
+  },
+  "name": "pa-atividade-99160",
+  "version": "1.0.0",
+  "description": "Autenticar via computador local no GitHub:\r ```\r gh auth login\r ```\r Clonar repositório no GitHub:\r ```\r gh repo clone nome-do-repositorio\r ```\r Abrir VS Code:\r ```\r code .\r ```",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiqueAq/pa-atividade-99160.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KaiqueAq/pa-atividade-99160/issues"
+  },
+  "homepage": "https://github.com/KaiqueAq/pa-atividade-99160#readme"
+}
