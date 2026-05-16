@@ -187,3 +187,45 @@ sequelize.sync().then(() => {
 }).catch((erro) => {
         console.error('Erro ao conectar ou sincronizar com o banco de dados:', erro);
     })
+
+
+
+
+app.put('/clientes/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nome, email, telefone } = req.body; // Dados recebidos no corpo da requisição
+
+    const cliente = await Cliente.findByPk(id);
+
+    // Verifica se algum registro foi de fato alterado
+    if (!cliente) {
+      return res.status(404).json({ erro: 'Usuário não encontrado.' });
+    }
+    await cliente.update({nome, email, telefone });
+    return res.status(200).json({ mensagem: 'Usuário atualizado com sucesso.' });
+  } catch (error) {
+    return res.status(500).json({ erro: 'Erro ao atualizar aluno. Verifique se o email já está em uso' });
+  }
+});
+
+// ❌ ROTA DELETE: Excluir um usuário por ID
+app.delete('/clientes/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Executa a exclusão no banco de dados
+    const cliente = await Cliente.findByPk(id);
+
+    // Verifica se algum registro foi excluído
+    if (!cliente) {
+      return res.status(404).json({ erro: 'Usuário não encontrado.' });
+    }
+
+    await cliente.destroy();
+
+    return res.status(200).json({ mensagem: 'Usuário deletado com sucesso.' });
+  } catch (error) {
+    return res.status(500).json({ erro: 'Erro interno do servidor.' });
+  }
+});
