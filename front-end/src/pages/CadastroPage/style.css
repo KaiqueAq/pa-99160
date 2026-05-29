@@ -1,0 +1,56 @@
+/* Container principal da página */
+.cadastro-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Cabeçalho da página de cadastro */
+.cadastro-header {
+  background-color: #004282; /* Azul Escuro SENAI */
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.cadastro-header p {
+  font-size: 1.1rem;
+  color: #e6f0fa;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Área central do formulário */
+.cadastro-main {
+  flex: 1;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* O cartão do formulário */
+.cadastro-form {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #004282; /* Detalhe azul no topo */
+}
+
+/* Grupos de inputs e labels */
+.form-group {
+  display: flex;
+  flex-direction : column;
+  margin-bottom: 20px;
+}

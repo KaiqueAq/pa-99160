@@ -1,0 +1,11 @@
+# Ignorar a pasta de dependências do Node
+node_modules/
+
+# Ignorar arquivos de configuração local e senhas
+.env
+
+# Ignorar todos os arquivos .log
+*.log
+
+# Ignorar pastas de log específicas
+logs/
