@@ -8,7 +8,13 @@ function App() {
   return (
     <>
       <Header />
-      
+      {/* <main>
+        <Routes>
+          <Route path="/cadastro" element={<CadastroPage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </main> */}
+      <Main />
       <Footer />
     </>
   );
