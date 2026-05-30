@@ -27,6 +27,10 @@ const Aluno = sequelize.define('Aluno', {
     // Coluna 'telefone': do tipo texto, pode ser nula.
     telefone: {
         type: DataTypes.STRING
+    },
+    curso: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
     // As colunas 'id', 'createdAt' e 'updatedAt' são criadas automaticamente!
 });
@@ -50,10 +54,10 @@ app.get('/alunos', async (req, res) => {
 // ROTA POST: Cadastrar um novo aluno
 app.post('/alunos', async (req, res) => {
     try {
-        const { nome, email, telefone } = req.body;
+        const { nome, email, telefone, curso } = req.body;
 
-        // Aluno.create(...) é o mesmo que "INSERT INTO Alunos (nome, email, ...) VALUES (...);"
-        const novoAluno = await Aluno.create({ nome, email, telefone });
+        // Aluno.create(...) é o mesmo que "INSERT INTO Alunos (nome, email, telefone, curso) VALUES (...);"
+        const novoAluno = await Aluno.create({ nome, email, telefone, curso });
 
         res.status(201).json({ message: 'Aluno cadastrado com sucesso!', aluno: novoAluno });
 
@@ -67,7 +71,7 @@ app.post('/alunos', async (req, res) => {
 // --- 5. INICIANDO O SERVIDOR E SINCRONIZANDO COM O BANCO ---
 // Primeiro, tentamos conectar e sincronizar com o banco de dados.
 // sequelize.sync() vai criar a tabela "Alunos" se ela ainda não existir.
-sequelize.sync().then(() => {
+sequelize.sync({ alter: true }).then(() => {
     // Se a sincronização deu certo, iniciamos o servidor.
     app.listen(port, () => {
         console.log(`🚀 Servidor rodando em http://localhost:${port}`);

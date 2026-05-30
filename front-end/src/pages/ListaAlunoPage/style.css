@@ -1,0 +1,96 @@
+/* Container principal da página */
+.lista-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f7f6; /* Fundo cinza bem claro para destacar a tabela branca */
+}
+
+/* Cabeçalho SENAI */
+.lista-header {
+  background-color: #004282;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.lista-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.lista-header p {
+  font-size: 1.1rem;
+  color: #e6f0fa;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Área da tabela */
+.lista-main {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Englobador da tabela para não quebrar no celular */
+.table-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow-x: auto; /* Permite rolar pro lado no celular */
+  border: 1px solid #e0e0e0;
+}
+
+/* Estilização da Tabela em si */
+.alunos-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Cabeçalho da tabela */
+.alunos-table th {
+  background-color: #f8fafc;
+  color: #004282;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 18px 20px;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+/* Células da tabela */
+.alunos-table td {
+  padding: 16px 20px;
+  color: #475569;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Efeito ao passar o mouse na linha */
+.alunos-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.alunos-table tbody tr:hover {
+  background-color: #f1f5f9; /* Azul bem clarinho no hover */
+}
+
+/* Etiqueta para o nome do curso (Badge) */
+.curso-badge {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize;
+}

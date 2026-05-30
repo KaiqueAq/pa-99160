@@ -9,12 +9,12 @@ export default  function Header() {
       </div>
       <nav className="nav-bar">
         <ul>
-          <li><a href="#inicio">Início</a></li>
+          <Link to="/" className="Home-link">Início</Link>
           <li><a href="#sobre">Sobre o SENAI</a></li>
           <li><a href="#cursos">Cursos</a></li>
           <li><a href="#contato">Contato</a></li>
           <Link to="/cadastro" className="cadastro-link">Cadastro</Link>
-          <Link to="/aqui" className="aqui-link">aqui</Link>
+          <Link to="/alunos" className="aqui-link">Lista de Alunos</Link>
         </ul>
       </nav>
     </header>
